@@ -1,5 +1,10 @@
 package proxypattern;
 
+import sun.misc.ProxyGenerator;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -30,6 +35,14 @@ public class Client {
         AbstractSubject proxy = (AbstractSubject) Proxy.newProxyInstance(classLoader, interfaces, invocationHandler);
         // 调用代理的方法
         proxy.request();
+        //下面这个是在根目录下生成代理类
+        try (FileOutputStream fileOutputStream = new FileOutputStream("subject.class")) {
+            fileOutputStream.write(ProxyGenerator.generateProxyClass("subject", interfaces));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
@@ -64,10 +77,15 @@ class DynamicProxy implements InvocationHandler {
     @Override
     public Object invoke(Object p, Method m, Object[] args) {
         try {
+            before();
             return m.invoke(object, args);
         } catch (IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void before() {
+        System.out.println("代理之前我做了一些处理");
     }
 }
