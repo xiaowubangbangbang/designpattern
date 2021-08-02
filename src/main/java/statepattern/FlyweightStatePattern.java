@@ -2,11 +2,14 @@ package statepattern;
 
 import java.util.HashMap;
 
+/**
+ * @author xiaowu
+ */
 public class FlyweightStatePattern {
     public static void main(String[] args) {
         ShareContext shareContext = new ShareContext();
-        shareContext.Handle();
-        shareContext.Handle();
+        shareContext.handle();
+        shareContext.handle();
     }
 }
 
@@ -22,8 +25,8 @@ class ShareContext {
         state = getState("1");
     }
 
-    public void Handle() {
-        state.Handle(this);
+    public void handle() {
+        state.handle(this);
     }
 
     public ShareState getState(String key) {
@@ -35,23 +38,23 @@ class ShareContext {
     }
 }
 
-abstract class ShareState {
-    abstract void Handle(ShareContext shareContext);
+interface ShareState {
+    void handle(ShareContext shareContext);
 }
 
-class ConcreteState1 extends ShareState {
+class ConcreteState1 implements ShareState {
 
     @Override
-    void Handle(ShareContext shareContext) {
+    public void handle(ShareContext shareContext) {
         System.out.println("当前状态是： 状态1");
         shareContext.setState(shareContext.getState("2"));
     }
 }
 
-class ConcreteState2 extends ShareState {
+class ConcreteState2 implements ShareState {
 
     @Override
-    void Handle(ShareContext shareContext) {
+    public void handle(ShareContext shareContext) {
         System.out.println("当前状态是： 状态2");
         shareContext.setState(shareContext.getState("1"));
     }

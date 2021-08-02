@@ -31,6 +31,9 @@ public class TwoWayAdapterTest {
  * 目标接口
  */
 interface TwoWayTarget {
+    /**
+     * request
+     */
     void request();
 }
 
@@ -40,19 +43,25 @@ interface TwoWayAdaptee {
 
 class TargetRealize implements TwoWayTarget {
 
+    @Override
     public void request() {
         System.out.println("目标代码被调用！");
     }
 }
 
-//适配者实现
+/**
+ * 适配者实现
+ */
 class AdapteeRealize implements TwoWayAdaptee {
+    @Override
     public void specificRequest() {
         System.out.println("适配者代码被调用！");
     }
 }
 
-//双向适配器
+/**
+ * 双向适配器
+ */
 class TwoWayAdapter implements TwoWayTarget, TwoWayAdaptee {
     private TwoWayTarget target;
     private TwoWayAdaptee adaptee;
@@ -65,10 +74,12 @@ class TwoWayAdapter implements TwoWayTarget, TwoWayAdaptee {
         this.adaptee = adaptee;
     }
 
+    @Override
     public void request() {
         adaptee.specificRequest();
     }
 
+    @Override
     public void specificRequest() {
         target.request();
     }

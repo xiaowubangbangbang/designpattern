@@ -11,6 +11,22 @@ class BuilderProduct {
     private String name;
     private String sex;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
     BuilderProduct(String name, String sex) {
         this.name = name;
         this.sex = sex;
@@ -41,6 +57,7 @@ class BuilderProduct {
             return new BuilderProduct(this.name, this.sex);
         }
 
+        @Override
         public String toString() {
             return "BuilderProduct.BuilderProductBuilder(name=" + this.name + ", sex=" + this.sex + ")";
         }

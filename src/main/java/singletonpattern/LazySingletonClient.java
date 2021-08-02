@@ -12,6 +12,10 @@ class LazySingleton {
     private static LazySingleton lazySingleton = null;
 
     public static LazySingleton getInstance() {
-        return lazySingleton == null ? lazySingleton = new LazySingleton() : lazySingleton;
+        if (lazySingleton == null) {
+            lazySingleton = new LazySingleton();
+            return lazySingleton;
+        }
+        return lazySingleton;
     }
 } 

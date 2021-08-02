@@ -3,6 +3,9 @@ package visitorpattern;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author xiaowu
+ */
 public class VisitorPattern {
     public static void main(String[] args) {
         ObjectStructure os = new ObjectStructure();
@@ -25,10 +28,12 @@ interface Visitor {
 
 //具体访问者A类
 class ConcreteVisitorA implements Visitor {
+    @Override
     public void visit(ConcreteElementA element) {
         System.out.println("具体访问者A访问-->" + element.operationA());
     }
 
+    @Override
     public void visit(ConcreteElementB element) {
         System.out.println("具体访问者A访问-->" + element.operationB());
     }
@@ -36,10 +41,12 @@ class ConcreteVisitorA implements Visitor {
 
 //具体访问者B类
 class ConcreteVisitorB implements Visitor {
+    @Override
     public void visit(ConcreteElementA element) {
         System.out.println("具体访问者B访问-->" + element.operationA());
     }
 
+    @Override
     public void visit(ConcreteElementB element) {
         System.out.println("具体访问者B访问-->" + element.operationB());
     }
@@ -52,6 +59,7 @@ interface Element {
 
 //具体元素A类
 class ConcreteElementA implements Element {
+    @Override
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }
@@ -63,6 +71,7 @@ class ConcreteElementA implements Element {
 
 //具体元素B类
 class ConcreteElementB implements Element {
+    @Override
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }

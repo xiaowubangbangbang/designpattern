@@ -75,9 +75,7 @@ class GiftProxy implements GiveGift {
     private Pursuit pursuit;
 
     public GiftProxy(SchoolGirl schoolGirl) {
-        if (this.pursuit == null) {
-            this.pursuit = new Pursuit(schoolGirl);
-        }
+        this.pursuit = new Pursuit(schoolGirl);
         pursuit.setName("小五");
     }
 

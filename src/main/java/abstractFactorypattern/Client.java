@@ -59,15 +59,18 @@ interface Farm {
     Animal newAnimal();
 
     Plant newPlant();
+
 }
 
 //具体工厂：韶关农场类
 class SGfarm implements Farm {
+    @Override
     public Animal newAnimal() {
         System.out.println("新牛出生！");
         return new Cattle();
     }
 
+    @Override
     public Plant newPlant() {
         System.out.println("蔬菜长成！");
         return new Vegetables();
@@ -76,11 +79,13 @@ class SGfarm implements Farm {
 
 //具体工厂：上饶农场类
 class SRfarm implements Farm {
+    @Override
     public Animal newAnimal() {
         System.out.println("新马出生！");
         return new Horse();
     }
 
+    @Override
     public Plant newPlant() {
         System.out.println("水果长成！");
         return new Fruitage();

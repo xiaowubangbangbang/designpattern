@@ -30,6 +30,7 @@ class TerminalExpression implements Expression {
         Collections.addAll(set, data);
     }
 
+    @Override
     public boolean interpret(String info) {
         return set.contains(info);
     }
@@ -63,7 +64,10 @@ class Context {
     }
 
     public void freeRide(String info) {
-        if (cityPerson.interpret(info)) System.out.println("您是" + info + "，您本次乘车免费！");
-        else System.out.println(info + "，您不是免费人员，本次乘车扣费2元！");
+        if (cityPerson.interpret(info)) {
+            System.out.println("您是" + info + "，您本次乘车免费！");
+        } else {
+            System.out.println(info + "，您不是免费人员，本次乘车扣费2元！");
+        }
     }
 }

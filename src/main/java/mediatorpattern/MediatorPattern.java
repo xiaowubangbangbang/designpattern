@@ -28,6 +28,7 @@ abstract class Mediator {
 class ConcreteMediator extends Mediator {
     private List<Colleague> colleagues = new ArrayList<Colleague>();
 
+    @Override
     public void register(Colleague colleague) {
         if (!colleagues.contains(colleague)) {
             colleagues.add(colleague);
@@ -35,6 +36,7 @@ class ConcreteMediator extends Mediator {
         }
     }
 
+    @Override
     public void relay(Colleague cl) {
         for (Colleague ob : colleagues) {
             if (!ob.equals(cl)) {
@@ -59,22 +61,27 @@ abstract class Colleague {
 
 //具体同事类
 class ConcreteColleague1 extends Colleague {
+    @Override
     public void receive() {
         System.out.println("具体同事类1收到请求。");
     }
 
+    @Override
     public void send() {
         System.out.println("具体同事类1发出请求。");
-        mediator.relay(this); //请中介者转发
+        //请中介者转发
+        mediator.relay(this);
     }
 }
 
 //具体同事类
 class ConcreteColleague2 extends Colleague {
+    @Override
     public void receive() {
         System.out.println("具体同事类2收到请求。");
     }
 
+    @Override
     public void send() {
         System.out.println("具体同事类2发出请求。");
         mediator.relay(this); //请中介者转发

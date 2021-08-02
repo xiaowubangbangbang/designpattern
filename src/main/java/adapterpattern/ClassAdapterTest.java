@@ -40,6 +40,7 @@ class ObjectAdapter implements Target {
         this.adaptee = adaptee;
     }
 
+    @Override
     public void request() {
         adaptee.specificRequest();
     }

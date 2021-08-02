@@ -2,7 +2,7 @@ package decoratorpattern;
 
 public class ConcreteDecoratorTest {
     public static void main(String[] args) {
-
+        new ConcreteDecoratorTestA(new ConcreteComponentTest()).operation();
     }
 }
 

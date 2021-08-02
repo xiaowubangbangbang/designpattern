@@ -1,28 +1,31 @@
 package decoratorpattern;
 
+/**
+ * @author xiaowu
+ */
 public class DecoratorPattern {
     public static void main(String[] args) {
         System.out.println("未加装饰的代码");
         ConcreteComponent concreteComponent = new ConcreteComponent();
-        concreteComponent.Operation();
+        concreteComponent.operation();
         System.out.println("通过装饰者A装饰");
         ConcreteDecoratorA concreteDecoratorA = new ConcreteDecoratorA(concreteComponent);
-        concreteDecoratorA.Operation();
+        concreteDecoratorA.operation();
         System.out.println("通过装饰者B装饰");
         ConcreteDecoratorB concreteDecoratorB = new ConcreteDecoratorB(concreteDecoratorA);
-        concreteDecoratorB.Operation();
+        concreteDecoratorB.operation();
     }
 }
 
 interface Component {
-    void Operation();
+    void operation();
 }
 
 
 class ConcreteComponent implements Component {
 
     @Override
-    public void Operation() {
+    public void operation() {
         System.out.println("具体的构件");
     }
 }
@@ -35,8 +38,8 @@ class Decorator implements Component {
     }
 
     @Override
-    public void Operation() {
-        component.Operation();
+    public void operation() {
+        component.operation();
     }
 }
 
@@ -47,8 +50,8 @@ class ConcreteDecoratorA extends Decorator {
     }
 
     @Override
-    public void Operation() {
-        super.Operation();
+    public void operation() {
+        super.operation();
         addedFunction();
     }
 
@@ -64,8 +67,8 @@ class ConcreteDecoratorB extends Decorator {
     }
 
     @Override
-    public void Operation() {
-        super.Operation();
+    public void operation() {
+        super.operation();
         addedFunction();
     }
 

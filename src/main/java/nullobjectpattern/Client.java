@@ -2,6 +2,10 @@ package nullobjectpattern;
 
 public class Client {
     public static void main(String[] args) {
+        AbstractCustomer a = CustomerFactory.getCustomer("a");
+        if (a.isNil()) {
+            System.out.println( a.getName());
+        }
         System.out.println(CustomerFactory.getCustomer("Joe").getName());
         System.out.println(CustomerFactory.getCustomer("aaa").getName());
     }

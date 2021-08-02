@@ -8,6 +8,7 @@ public class VisitorProducer {
         SetMaterial setMaterial = new SetMaterial();
         setMaterial.add(new Paper());
         setMaterial.add(new Cuprum());
+        setMaterial.add(new Water());
         System.out.println(setMaterial.accept(new ArtCompany()));
         System.out.println("--------------");
         System.out.println(setMaterial.accept(new Mint()));
@@ -19,6 +20,8 @@ interface Company {
     String create(Paper element);
 
     String create(Cuprum element);
+
+    String create(Water element);
 }
 
 class ArtCompany implements Company {
@@ -32,6 +35,11 @@ class ArtCompany implements Company {
     public String create(Cuprum element) {
         return "艺术公司朱熹铜像";
     }
+
+    @Override
+    public String create(Water element) {
+        return "艺术公司用水生产颜料";
+    }
 }
 
 class Mint implements Company {
@@ -44,6 +52,11 @@ class Mint implements Company {
     @Override
     public String create(Cuprum element) {
         return "造币公司铜币";
+    }
+
+    @Override
+    public String create(Water element) {
+        return "造币公司用水排污";
     }
 }
 
@@ -66,12 +79,21 @@ class Cuprum implements Material {
     }
 }
 
+class Water implements Material {
+    @Override
+    public String accept(Company company) {
+        return company.create(this);
+    }
+}
+
 class SetMaterial {
     private List<Material> materialList = new ArrayList<>();
 
     public String accept(Company company) {
         StringBuilder str = new StringBuilder();
-        for (Material material : materialList) str.append(material.accept(company)).append("\n");
+        for (Material material : materialList) {
+            str.append(material.accept(company)).append("\n");
+        }
         return str.toString();
     }
 

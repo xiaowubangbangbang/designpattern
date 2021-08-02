@@ -13,13 +13,14 @@ package strategypattern;
  * 链接：https://juejin.cn/post/6844903895290871816
  * 来源：掘金
  * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+ * @author xiaowu
  */
 public class StrategyTemplateTest {
     public static void main(String[] args) {
-        GamePlatFrom mobaPC = new MobaPC();
+        GamePlatFrom pc = new MobaPC();
         StrategyTemplateContext strategyTemplateContext = new StrategyTemplateContext();
-        strategyTemplateContext.setStrategy(mobaPC);
-        mobaPC.strategyMethod();
+        strategyTemplateContext.setStrategy(pc);
+      strategyTemplateContext.strategyMethod();
     }
 }
 
@@ -50,7 +51,6 @@ abstract class Moba implements GamePlatFrom {
 
     @Override
     public void strategyMethod() {
-        getAction();
         getAction();
         getAttributes();
     }
@@ -92,7 +92,6 @@ abstract class FPS implements GamePlatFrom {
     @Override
     public void strategyMethod() {
         getAction();
-        getAction();
         getAttributes();
     }
 }
@@ -132,7 +131,6 @@ abstract class Chess implements GamePlatFrom {
 
     @Override
     public void strategyMethod() {
-        getAction();
         getAction();
         getAttributes();
     }

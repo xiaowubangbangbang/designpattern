@@ -10,6 +10,11 @@ public class ComplexFlyweightPattern {
         ComplexFlyweight flyweight = new ComplexFlyweightFactory().getFlyweight("新闻", "博客", "视频");
         flyweight.operation(new ComplexUnsharedConcreteFlyweight("小白"));
         flyweight.operation(new ComplexUnsharedConcreteFlyweight("小明"));
+        System.out.println("------------------------------------------------");
+        CompositeConcreteFlyweight compositeConcreteFlyweight = new CompositeConcreteFlyweight();
+        compositeConcreteFlyweight.add(new ComplexConcreteFlyweight("图片"));
+        compositeConcreteFlyweight.add(new ComplexConcreteFlyweight("书籍"));
+        compositeConcreteFlyweight.operation(new ComplexUnsharedConcreteFlyweight("小五"));
     }
 }
 

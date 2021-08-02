@@ -32,19 +32,22 @@ interface Aggregate {
 class ConcreteAggregate implements Aggregate {
     private List<Object> list = new ArrayList<Object>();
 
+    @Override
     public void add(Object obj) {
         list.add(obj);
     }
 
+    @Override
     public void remove(Object obj) {
         list.remove(obj);
     }
 
+    @Override
     public Iterator getIterator() {
-        return (new ConcreteIterator(list));
+        return new ConcreteIterator(list);
     }
-}//抽象迭代器
-
+}
+//抽象迭代器
 interface Iterator {
     Object first();
 
@@ -62,15 +65,18 @@ class ConcreteIterator implements Iterator {
         this.list = list;
     }
 
+    @Override
     public boolean hasNext() {
         return index < list.size() - 1;
     }
 
+    @Override
     public Object first() {
         index = 0;
         return list.get(index);
     }
 
+    @Override
     public Object next() {
         Object obj = null;
         if (this.hasNext()) {

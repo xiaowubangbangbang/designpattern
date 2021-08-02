@@ -1,5 +1,8 @@
 package adapterpattern;
 
+/**
+ * @author xiaowu
+ */
 public class MotorAdapterTest {
     public static void main(String[] args) {
         Motor motor = new OpticalAdapter(new OpticalMotor());
@@ -33,6 +36,7 @@ class ElectricAdapter implements Motor {
         this.electricMotor = electricMotor;
     }
 
+    @Override
     public void drive() {
         electricMotor.electricDrive();
     }
@@ -46,6 +50,7 @@ class OpticalAdapter implements Motor {
         this.opticalMotor = opticalMotor;
     }
 
+    @Override
     public void drive() {
         opticalMotor.opticalDrive();
     }

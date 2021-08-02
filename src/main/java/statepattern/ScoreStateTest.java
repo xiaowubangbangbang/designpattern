@@ -64,6 +64,7 @@ class LowState extends AbstractState {
         score = state.score;
     }
 
+    @Override
     public void checkState() {
         if (score >= 90) {
             hj.setState(new HighState(this));
@@ -81,6 +82,7 @@ class MiddleState extends AbstractState {
         score = state.score;
     }
 
+    @Override
     public void checkState() {
         if (score < 60) {
             hj.setState(new LowState(this));
@@ -98,6 +100,7 @@ class HighState extends AbstractState {
         score = state.score;
     }
 
+    @Override
     public void checkState() {
         if (score < 60) {
             hj.setState(new LowState(this));

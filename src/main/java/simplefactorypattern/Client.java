@@ -13,6 +13,7 @@ public class Client {
 
     //具体产品：ProductA
     static class ConcreteProduct1 implements Product {
+        @Override
         public void show() {
             System.out.println("具体产品1显示...");
         }
@@ -20,6 +21,7 @@ public class Client {
 
     //具体产品：ProductB
     static class ConcreteProduct2 implements Product {
+        @Override
         public void show() {
             System.out.println("具体产品2显示...");
         }
@@ -38,8 +40,9 @@ public class Client {
                     return new ConcreteProduct1();
                 case Const.PRODUCT_B:
                     return new ConcreteProduct2();
+                default:
+                    return null;
             }
-            return null;
         }
     }
 }
